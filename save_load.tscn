@@ -1,0 +1,86 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://save_load.gd" type="Script" id=1]
+
+[sub_resource type="ButtonGroup" id=1]
+
+[node name="SaveLoad" type="PopupPanel"]
+visible = true
+margin_right = 768.0
+margin_bottom = 450.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Buttons" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 76.0
+margin_bottom = 442.0
+alignment = 1
+
+[node name="Save" type="Button" parent="HBoxContainer/Buttons"]
+margin_top = 175.0
+margin_right = 76.0
+margin_bottom = 195.0
+disabled = true
+text = "Save"
+
+[node name="Load" type="Button" parent="HBoxContainer/Buttons"]
+margin_top = 199.0
+margin_right = 76.0
+margin_bottom = 219.0
+disabled = true
+text = "Load"
+
+[node name="Delete" type="Button" parent="HBoxContainer/Buttons"]
+margin_top = 223.0
+margin_right = 76.0
+margin_bottom = 243.0
+disabled = true
+text = "Delete"
+
+[node name="DeleteAll" type="Button" parent="HBoxContainer/Buttons"]
+margin_top = 247.0
+margin_right = 76.0
+margin_bottom = 267.0
+disabled = true
+text = "Delete All"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer"]
+margin_left = 80.0
+margin_right = 760.0
+margin_bottom = 442.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slots" type="VBoxContainer" parent="HBoxContainer/ScrollContainer"]
+margin_right = 680.0
+margin_bottom = 442.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NewSlot" type="Button" parent="HBoxContainer/ScrollContainer/Slots"]
+margin_right = 680.0
+margin_bottom = 20.0
+toggle_mode = true
+group = SubResource( 1 )
+text = "New slot"
+
+[connection signal="pressed" from="HBoxContainer/Buttons/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="HBoxContainer/Buttons/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="HBoxContainer/Buttons/Delete" to="." method="_on_delete_pressed" flags=3]
+[connection signal="pressed" from="HBoxContainer/Buttons/DeleteAll" to="." method="_on_delete_all_pressed" flags=3]
+[connection signal="pressed" from="HBoxContainer/ScrollContainer/Slots/NewSlot" to="." method="_on_new_slot_pressed"]
